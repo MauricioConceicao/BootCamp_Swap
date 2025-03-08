@@ -1,0 +1,262 @@
+{
+	"info": {
+		"_postman_id": "e4a58b2d-c1f9-4baf-a6a8-9d9d54e8f5d7",
+		"name": "Bootcamp Challenge API",
+		"description": "Coleção para testar a API de desafios do bootcamp",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Desafio 1",
+			"item": [
+				{
+					"name": "Obter URL Desafio 1",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/challenges/part1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"challenges",
+								"part1"
+							]
+						}
+					}
+				},
+				{
+					"name": "Validar Desafio 1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"solution\": \"# Cole sua solução Elixir aqui\",\n    \"user_id\": \"seu_id_aqui\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/challenge1/validate",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"challenge1",
+								"validate"
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Desafio 2",
+			"item": [
+				{
+					"name": "Obter URL Desafio 2",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/challenges/part2?uuid_part1={{uuid_part1}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"challenges",
+								"part2"
+							],
+							"query": [
+								{
+									"key": "uuid_part1",
+									"value": "{{uuid_part1}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Validar Desafio 2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"solution\": \"# Cole sua solução JavaScript/Python aqui\",\n    \"user_id\": \"seu_id_aqui\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/challenge2/validate?uuid_part1={{uuid_part1}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"challenge2",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "uuid_part1",
+									"value": "{{uuid_part1}}"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Desafio 3",
+			"item": [
+				{
+					"name": "Obter URL Desafio 3",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/challenges/part3?uuid_part1={{uuid_part1}}&uuid_part2={{uuid_part2}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"challenges",
+								"part3"
+							],
+							"query": [
+								{
+									"key": "uuid_part1",
+									"value": "{{uuid_part1}}"
+								},
+								{
+									"key": "uuid_part2",
+									"value": "{{uuid_part2}}"
+								}
+							]
+						}
+					}
+				},
+				{
+					"name": "Validar Desafio 3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"solution\": \"// Cole sua solução Java aqui\",\n    \"user_id\": \"seu_id_aqui\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/challenge3/validate?uuid_part1={{uuid_part1}}&uuid_part2={{uuid_part2}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"challenge3",
+								"validate"
+							],
+							"query": [
+								{
+									"key": "uuid_part1",
+									"value": "{{uuid_part1}}"
+								},
+								{
+									"key": "uuid_part2",
+									"value": "{{uuid_part2}}"
+								}
+							]
+						}
+					}
+				}
+			]
+		},
+		{
+			"name": "Verificação Final",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/verify?uuid_part1={{uuid_part1}}&uuid_part2={{uuid_part2}}&uuid_part3={{uuid_part3}}",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"verify"
+					],
+					"query": [
+						{
+							"key": "uuid_part1",
+							"value": "{{uuid_part1}}"
+						},
+						{
+							"key": "uuid_part2",
+							"value": "{{uuid_part2}}"
+						},
+						{
+							"key": "uuid_part3",
+							"value": "{{uuid_part3}}"
+						}
+					]
+				}
+			}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "uuid_part1",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "uuid_part2",
+			"value": "",
+			"type": "string"
+		},
+		{
+			"key": "uuid_part3",
+			"value": "",
+			"type": "string"
+		}
+	]
+}

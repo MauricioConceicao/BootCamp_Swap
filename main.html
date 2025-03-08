@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currículo Épico - Maurício Conceição</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
+        
+        body {
+            font-family: 'Orbitron', sans-serif;
+            background: url('images.jpg') no-repeat center center;
+            background-size: cover;
+            background-attachment: fixed;
+            color: #ffffff;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            overflow-y: auto;
+            height: 100vh;
+            cursor: none;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.3);
+            backdrop-filter: blur(5px);
+            margin-top: 20px;
+        }
+
+        h1 {
+            font-size: 3em;
+            color: #ffcc00;
+            text-shadow: 0 0 10px #ff6600;
+        }
+        .subtitle {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #002fff;
+            text-shadow: 0 0 10px #d2c8ff;
+        }
+
+        section {
+            margin-bottom: 30px;
+            padding: 15px;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
+            transition: transform 0.3s;
+        }
+
+        section:hover {
+            transform: scale(1.05);
+        }
+
+        a {
+            color: #00ffff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            color: #0004ff;
+            text-decoration: underline;
+        }
+
+        .glow {
+            animation: glow 1.5s infinite alternate;
+        }
+
+        @keyframes glow {
+            from {
+                text-shadow: 0 0 10px #ffffff, 0 0 20px #81fff5;
+            }
+            to {
+                text-shadow: 0 0 20px #6151f0, 0 0 30px #3204ff;
+            }
+        }
+
+        #playButton {
+            background-color: #ff6600;
+            color: white;
+            border: 2px solid #ffcc00;
+            padding: 15px 30px;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 8px;
+            cursor: pointer;
+            box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        #playButton:hover {
+            background-color: #ffcc00;
+            color: #002fff;
+            transform: scale(1.1);
+        }
+
+        #playButton:active {
+            background-color: #d8b300;
+            box-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+        }
+
+        .magic-cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 215, 0, 0.6));
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            animation: magicMove 0.3s ease-out, trailEffect 1.2s infinite;
+        }
+
+        @keyframes magicMove {
+            0% {
+                transform: scale(1) translate(-50%, -50%);
+            }
+            100% {
+                transform: scale(1.5) translate(-50%, -50%);
+            }
+        }
+
+        .trail {
+            position: absolute;
+            width: 30px;
+            height: 30px;
+            background: radial-gradient(circle, rgba(255, 215, 0, 0.8), rgba(255, 255, 255, 0.2));
+            border-radius: 50%;
+            pointer-events: none;
+            transform: translate(-50%, -50%);
+            animation: trailEffect 1.2s ease-out;
+            z-index: 9999;
+        }
+
+        @keyframes trailEffect {
+            0% {
+                opacity: 1;
+                transform: scale(1) translate(-50%, -50%);
+            }
+            100% {
+                opacity: 0;
+                transform: scale(2.5) translate(-50%, -50%);
+            }
+        }
+
+        /* Responsividade para telas menores */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+            }
+
+            .subtitle {
+                font-size: 1.2em;
+            }
+
+            section {
+                padding: 10px;
+                margin-bottom: 20px;
+            }
+
+            #playButton {
+                padding: 10px 20px;
+                font-size: 1em;
+            }
+
+            .container {
+                padding: 15px;
+                max-width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .subtitle {
+                font-size: 1em;
+            }
+
+            section {
+                padding: 10px;
+            }
+
+            .container {
+                padding: 10px;
+                margin-top: 10px;
+            }
+
+            #playButton {
+                padding: 8px 16px;
+                font-size: 0.9em;
+            }
+        }
+
+        /* Remover pontos das listas não ordenadas */
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+    </style>
+</head>
+<body>
+    <audio id="harryPotterAudio" loop>
+        <source src="Harry-Potter.mp3" type="audio/mp3">
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <button id="playButton" onclick="playAudio()" style="display:none;">Aumente o Feitiço!</button>
+
+    <script>
+        function playAudio() {
+            var audio = document.getElementById('harryPotterAudio');
+            audio.play();
+            document.getElementById('playButton').style.display = 'none';
+        }
+
+        window.onload = function() {
+            var audio = document.getElementById('harryPotterAudio');
+            var playPromise = audio.play();
+
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    console.log("Áudio iniciado automaticamente.");
+                }).catch(function(error) {
+                    console.log("Autoplay bloqueado, exibindo botão para iniciar o áudio.");
+                    document.getElementById('playButton').style.display = 'inline';
+                });
+            }
+        };
+
+        const magicCursor = document.createElement('div');
+        magicCursor.classList.add('magic-cursor');
+        document.body.appendChild(magicCursor);
+
+        function createTrail(x, y) {
+            const trail = document.createElement('div');
+            trail.classList.add('trail');
+            trail.style.left = `${x}px`;
+            trail.style.top = `${y}px`;
+            document.body.appendChild(trail);
+            setTimeout(() => {
+                trail.remove();
+            }, 1200);
+        }
+
+        document.addEventListener('mousemove', (e) => {
+            magicCursor.style.left = `${e.pageX}px`;
+            magicCursor.style.top = `${e.pageY}px`;
+
+            createTrail(e.pageX, e.pageY);
+        });
+
+        document.querySelectorAll('a, #playButton').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                magicCursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 0, 0, 0.6))';
+            });
+            el.addEventListener('mouseleave', () => {
+                magicCursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 215, 0, 0.6))';
+            });
+        });
+    </script>
+
+    <div class="container">
+        <header>
+            <h1 class="glow">Maurício Conceição</h1>
+            <p class="subtitle">Aventureiro do Código | Caçador de Bugs | Feiticeiro da Tecnologia</p>
+        </header>
+        
+        <section class="about">
+            <h2>🔥 Sobre Mim</h2>
+            <p>Sou um desenvolvedor apaixonado por desafios, aprendizado constante e soluções criativas. Atualmente cursando <strong>Análise e Desenvolvimento de Sistemas</strong>, busco sempre me aprimorar em linguagens como <strong>Elixir, Java e Python</strong>. Minha jornada inclui experiência em suporte técnico e desenvolvimento web, sempre com a missão de decifrar os enigmas do código e otimizar sistemas.</p>
+        </section>
+
+        <section class="experience">
+            <h2>🚀 Experiência Profissional</h2>
+            <ul>
+                <li><strong>Operador SOC/NOC - IlhaService Tecnologia (Atualmente)</strong>
+                    <p>Atuação no cliente BANRISUL, monitoramento de segurança e redes, resposta a incidentes e análise de eventos críticos.</p>
+                </li>
+                <li><strong>Estagiário de Suporte - Hospital de Clínicas de PoA (2022 - 2024)</strong>
+                    <p>Atendimento e sustentação N1/N2, trabalhando em equipe para resolução de problemas técnicos.</p>
+                </li>
+            </ul>
+        </section>
+        
+        <section class="education">
+            <h2>📚 Formação Acadêmica</h2>
+            <ul>
+                <li><strong>Cursando Análise e Desenvolvimento de Sistemas</strong></li>
+                <li><strong>Técnico em TI - E.E.E.P Dr. Solon Tavares (2024)</strong></li>
+            </ul>
+        </section>
+
+        <section class="skills">
+            <h2>🎯 Habilidades Técnicas</h2>
+            <ul>
+                <li>Desenvolvimento Web</li>
+                <li>Banco de Dados</li>
+                <li>Resolução de Problemas</li>
+                <li>Programação: Elixir, Java, Python</li>
+            </ul>
+        </section>
+
+        <section class="contact">
+            <h2>📞 Contato</h2>
+            <p>Email: <a href="mailto:mauricioconceicao777@gmail.com">mauricioconceicao777@gmail.com</a></p>
+            <p>WhatsApp: <a href="https://wa.me/5551994437126?text=Ol%C3%A1+%2AMaur%C3%ADcio%2A%2C+recebemos+seu+curr%C3%ADculo.+Podemos+conversar%3F">Clique aqui para falar comigo</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/maur%C3%ADcioconcei%C3%A7%C3%A3o/">Maurício Conceição</a></p>
+        </section>
+    </div>
+</body>
+</html>
