@@ -210,64 +210,49 @@
     </style>
 </head>
 <body>
-    <audio id="harryPotterAudio" loop>
-        <source src="Harry-Potter.mp3" type="audio/mp3">
-        Seu navegador não suporta áudio.
-    </audio>
-
-    <button id="playButton" onclick="playAudio()" style="display:none;">Aumente o Feitiço!</button>
-
     <script>
-        function playAudio() {
-            var audio = document.getElementById('harryPotterAudio');
-            audio.play();
-            document.getElementById('playButton').style.display = 'none';
-        }
 
-        window.onload = function() {
-            var audio = document.getElementById('harryPotterAudio');
-            var playPromise = audio.play();
+         // Adiciona o cursor mágico
+const magicCursor = document.createElement('div');
+magicCursor.classList.add('magic-cursor');
+document.body.appendChild(magicCursor);
 
-            if (playPromise !== undefined) {
-                playPromise.then(function() {
-                    console.log("Magia iniciada automaticamente.");
-                }).catch(function(error) {
-                    console.log("Autoplay bloqueado, exibindo botão para iniciar a Magia.");
-                    document.getElementById('playButton').style.display = 'inline';
-                });
-            }
-        };
+// Função para criar o rastro da magia
+function createTrail(x, y) {
+    const trail = document.createElement('div');
+    trail.classList.add('trail');
+    trail.style.left = `${x}px`;
+    trail.style.top = `${y}px`;
+    document.body.appendChild(trail);
+    setTimeout(() => {
+        trail.remove();
+    }, 1200);
+}
 
-        const magicCursor = document.createElement('div');
-        magicCursor.classList.add('magic-cursor');
-        document.body.appendChild(magicCursor);
+// Movimento da magia com o mouse
+document.addEventListener('mousemove', (e) => {
+    magicCursor.style.left = `${e.pageX}px`;
+    magicCursor.style.top = `${e.pageY}px`;
+    createTrail(e.pageX, e.pageY);
+});
 
-        function createTrail(x, y) {
-            const trail = document.createElement('div');
-            trail.classList.add('trail');
-            trail.style.left = `${x}px`;
-            trail.style.top = `${y}px`;
-            document.body.appendChild(trail);
-            setTimeout(() => {
-                trail.remove();
-            }, 1200);
-        }
+// Movimento da magia com o toque na tela
+document.addEventListener('touchmove', (e) => {
+    const touch = e.touches[0];
+    magicCursor.style.left = `${touch.pageX}px`;
+    magicCursor.style.top = `${touch.pageY}px`;
+    createTrail(touch.pageX, touch.pageY);
+});
 
-        document.addEventListener('mousemove', (e) => {
-            magicCursor.style.left = `${e.pageX}px`;
-            magicCursor.style.top = `${e.pageY}px`;
-
-            createTrail(e.pageX, e.pageY);
-        });
-
-        document.querySelectorAll('a, #playButton').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                magicCursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 0, 0, 0.6))';
-            });
-            el.addEventListener('mouseleave', () => {
-                magicCursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 215, 0, 0.6))';
-            });
-        });
+// Efeito de hover nos botões e links
+document.querySelectorAll('a, #playButton').forEach(el => {
+    el.addEventListener('mouseenter', () => {
+        magicCursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 0, 0, 0.6))';
+    });
+    el.addEventListener('mouseleave', () => {
+        magicCursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 215, 0, 0.6))';
+    });
+});
     </script>
 
     <div class="container">
