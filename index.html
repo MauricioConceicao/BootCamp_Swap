@@ -213,46 +213,46 @@
     <script>
 
          // Adiciona o cursor mágico
-const magicCursor = document.createElement('div');
-magicCursor.classList.add('magic-cursor');
-document.body.appendChild(magicCursor);
+        const magicCursor = document.createElement('div');
+            magicCursor.classList.add('magic-cursor');
+            document.body.appendChild(magicCursor);
 
-// Função para criar o rastro da magia
-function createTrail(x, y) {
-    const trail = document.createElement('div');
-    trail.classList.add('trail');
-    trail.style.left = `${x}px`;
-    trail.style.top = `${y}px`;
-    document.body.appendChild(trail);
-    setTimeout(() => {
-        trail.remove();
-    }, 1200);
-}
+        // Função para criar o rastro da magia
+        function createTrail(x, y) {
+            const trail = document.createElement('div');
+            trail.classList.add('trail');
+            trail.style.left = `${x}px`;
+            trail.style.top = `${y}px`;
+            document.body.appendChild(trail);
+            setTimeout(() => {
+                trail.remove();
+            }, 1200);
+        }
 
-// Movimento da magia com o mouse
-document.addEventListener('mousemove', (e) => {
-    magicCursor.style.left = `${e.pageX}px`;
-    magicCursor.style.top = `${e.pageY}px`;
-    createTrail(e.pageX, e.pageY);
-});
+        // Movimento da magia com o mouse
+            document.addEventListener('mousemove', (e) => {
+            magicCursor.style.left = `${e.pageX}px`;
+            magicCursor.style.top = `${e.pageY}px`;
+            createTrail(e.pageX, e.pageY);
+        });
 
-// Movimento da magia com o toque na tela
-document.addEventListener('touchmove', (e) => {
-    const touch = e.touches[0];
-    magicCursor.style.left = `${touch.pageX}px`;
-    magicCursor.style.top = `${touch.pageY}px`;
-    createTrail(touch.pageX, touch.pageY);
-});
+        // Movimento da magia com o toque na tela
+        document.addEventListener('touchmove', (e) => {
+        const touch = e.touches[0];
+        magicCursor.style.left = `${touch.pageX}px`;
+        magicCursor.style.top = `${touch.pageY}px`;
+        createTrail(touch.pageX, touch.pageY);
+        });
 
-// Efeito de hover nos botões e links
-document.querySelectorAll('a, #playButton').forEach(el => {
-    el.addEventListener('mouseenter', () => {
-        magicCursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 0, 0, 0.6))';
-    });
-    el.addEventListener('mouseleave', () => {
-        magicCursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 215, 0, 0.6))';
-    });
-});
+        // Efeito de hover nos botões e links
+        document.querySelectorAll('a, #playButton').forEach(el => {
+                el.addEventListener('mouseenter', () => {
+                magicCursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 0, 0, 0.6))';
+            });
+            el.addEventListener('mouseleave', () => {
+                magicCursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 215, 0, 0.6))';
+            });
+        });
     </script>
 
     <div class="container">
