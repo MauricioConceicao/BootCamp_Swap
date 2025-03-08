@@ -8,7 +8,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700&display=swap');
-        
+
         body {
             font-family: 'Orbitron', sans-serif;
             background: url('images.jpg') no-repeat center center;
@@ -95,6 +95,8 @@
             cursor: pointer;
             box-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
             transition: background-color 0.3s, transform 0.3s;
+            margin-bottom: 20px;
+            display: none;
         }
 
         #playButton:hover {
@@ -152,57 +154,6 @@
             }
         }
 
-        /* Responsividade para telas menores */
-        @media (max-width: 768px) {
-            h1 {
-                font-size: 2.5em;
-            }
-
-            .subtitle {
-                font-size: 1.2em;
-            }
-
-            section {
-                padding: 10px;
-                margin-bottom: 20px;
-            }
-
-            #playButton {
-                padding: 10px 20px;
-                font-size: 1em;
-            }
-
-            .container {
-                padding: 15px;
-                max-width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 2em;
-            }
-
-            .subtitle {
-                font-size: 1em;
-            }
-
-            section {
-                padding: 10px;
-            }
-
-            .container {
-                padding: 10px;
-                margin-top: 10px;
-            }
-
-            #playButton {
-                padding: 8px 16px;
-                font-size: 0.9em;
-            }
-        }
-
-        /* Remover pontos das listas não ordenadas */
         ul {
             list-style-type: none;
             padding-left: 0;
@@ -210,49 +161,33 @@
     </style>
 </head>
 <body>
+    <audio id="harryPotterAudio" loop>
+        <source src="Harry-Potter.mp3" type="audio/mp3">
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <button id="playButton" onclick="playAudio()">Aumente o Feitiço!</button>
+
     <script>
-
-         // Adiciona o cursor mágico
-        const magicCursor = document.createElement('div');
-            magicCursor.classList.add('magic-cursor');
-            document.body.appendChild(magicCursor);
-
-        // Função para criar o rastro da magia
-        function createTrail(x, y) {
-            const trail = document.createElement('div');
-            trail.classList.add('trail');
-            trail.style.left = `${x}px`;
-            trail.style.top = `${y}px`;
-            document.body.appendChild(trail);
-            setTimeout(() => {
-                trail.remove();
-            }, 1200);
+        function playAudio() {
+            var audio = document.getElementById('harryPotterAudio');
+            audio.play();
+            document.getElementById('playButton').style.display = 'none';
         }
 
-        // Movimento da magia com o mouse
-            document.addEventListener('mousemove', (e) => {
-            magicCursor.style.left = `${e.pageX}px`;
-            magicCursor.style.top = `${e.pageY}px`;
-            createTrail(e.pageX, e.pageY);
-        });
+        window.onload = function() {
+            var audio = document.getElementById('harryPotterAudio');
+            var playPromise = audio.play();
 
-        // Movimento da magia com o toque na tela
-        document.addEventListener('touchmove', (e) => {
-        const touch = e.touches[0];
-        magicCursor.style.left = `${touch.pageX}px`;
-        magicCursor.style.top = `${touch.pageY}px`;
-        createTrail(touch.pageX, touch.pageY);
-        });
-
-        // Efeito de hover nos botões e links
-        document.querySelectorAll('a, #playButton').forEach(el => {
-                el.addEventListener('mouseenter', () => {
-                magicCursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 0, 0, 0.6))';
-            });
-            el.addEventListener('mouseleave', () => {
-                magicCursor.style.background = 'radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 215, 0, 0.6))';
-            });
-        });
+            if (playPromise !== undefined) {
+                playPromise.then(function() {
+                    console.log("Magia iniciada automaticamente.");
+                }).catch(function(error) {
+                    console.log("Autoplay bloqueado, exibindo botão para iniciar a Magia.");
+                    document.getElementById('playButton').style.display = 'block';
+                });
+            }
+        };
     </script>
 
     <div class="container">
@@ -260,47 +195,10 @@
             <h1 class="glow">Maurício Conceição</h1>
             <p class="subtitle">Aventureiro do Código | Caçador de Bugs | Feiticeiro da Tecnologia</p>
         </header>
-        
+
         <section class="about">
             <h2>🔥 Sobre Mim</h2>
-            <p>Sou um desenvolvedor apaixonado por desafios, aprendizado constante e soluções criativas. Atualmente cursando <strong>Análise e Desenvolvimento de Sistemas</strong>, busco sempre me aprimorar em linguagens como <strong>Elixir, Java e Python</strong>. Minha jornada inclui experiência em suporte técnico e desenvolvimento web, sempre com a missão de decifrar os enigmas do código e otimizar sistemas.</p>
-        </section>
-
-        <section class="experience">
-            <h2>🚀 Experiência Profissional</h2>
-            <ul>
-                <li><strong>Operador SOC/NOC - IlhaService Tecnologia (Atualmente)</strong>
-                    <p>Atuação no cliente BANRISUL, monitoramento de segurança e redes, resposta a incidentes e análise de eventos críticos.</p>
-                </li>
-                <li><strong>Estagiário de Suporte - Hospital de Clínicas de PoA (2022 - 2024)</strong>
-                    <p>Atendimento e sustentação N1/N2, trabalhando em equipe para resolução de problemas técnicos.</p>
-                </li>
-            </ul>
-        </section>
-        
-        <section class="education">
-            <h2>📚 Formação Acadêmica</h2>
-            <ul>
-                <li><strong>Cursando Análise e Desenvolvimento de Sistemas</strong></li>
-                <li><strong>Técnico em TI - E.E.E.P Dr. Solon Tavares (2024)</strong></li>
-            </ul>
-        </section>
-
-        <section class="skills">
-            <h2>🎯 Habilidades Técnicas</h2>
-            <ul>
-                <li>Desenvolvimento Web</li>
-                <li>Banco de Dados</li>
-                <li>Resolução de Problemas</li>
-                <li>Programação: Elixir, Java, Python</li>
-            </ul>
-        </section>
-
-        <section class="contact">
-            <h2>📞 Contato</h2>
-            <p>Email: <a href="mailto:mauricioconceicao777@gmail.com">mauricioconceicao777@gmail.com</a></p>
-            <p>WhatsApp: <a href="https://wa.me/5551994437126?text=Ol%C3%A1+%2AMaur%C3%ADcio%2A%2C+recebemos+seu+curr%C3%ADculo.+Podemos+conversar%3F">Clique aqui para falar comigo</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/maur%C3%ADcioconcei%C3%A7%C3%A3o/">Maurício Conceição</a></p>
+            <p>Desenvolvedor apaixonado por desafios, aprendizado constante e soluções criativas.</p>
         </section>
     </div>
 </body>
